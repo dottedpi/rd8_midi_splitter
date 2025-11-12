@@ -48,7 +48,7 @@ function factory () return function ()
 	for track in Session:get_tracks():iter() do                                                         --iterate over all tracks in the session
 		if (string.find(track:name(), rd8_track_name) and track:data_type():to_string() == "midi") then --check if valid RD8_MIDI_Master exists
 			rd8_midi_master_found = true						
-			local rd8_midi_master_track = track:to_track():to_midi_track()						            --select the first valid option
+			local rd8_midi_master_track = track:to_track():to_midi_track()						        --select the first valid option
 			break
             --print(tostring(rd8_midi_master_track:get_playback_channel_mode()))					
 			--print(string.format("%x",rd8_midi_master_track:get_playback_channel_mask()))
@@ -101,7 +101,7 @@ function factory () return function ()
     end
 
     if (not rd8_found) and rv["auto_connect_to_rd8"] then
-		LuaDialog.Message ("RD-8 disconnected?", "Could not auto-connect new tracks!", LuaDialog.MessageType.Warning, LuaDialog.ButtonType.Close):run()
+		LuaDialog.Message ("RD-8 disconnected?", "Cannot auto-connect new tracks!", LuaDialog.MessageType.Warning, LuaDialog.ButtonType.Close):run()
 	end
 
 	-------------------------------------
